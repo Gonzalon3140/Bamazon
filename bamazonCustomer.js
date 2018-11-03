@@ -44,10 +44,10 @@ function checkAndBuy() {
 
         })
         .then(function (quantity) {
-          console.log(id)
+          // console.log(id)
           connection.query("Select * From Products Where id = ?", [id.id], function (err, product) {
             if (product[0].stock_quantity < quantity.quantity) {
-              console.log("nope not gonna happen")
+              console.log("Sorry we are Currently out of that product Please try again")
               checkAndBuy();
             } else {
               let newQuantity = product[0].stock_quantity - quantity.quantity
